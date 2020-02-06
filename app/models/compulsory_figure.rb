@@ -1,0 +1,2 @@
+class CompulsoryFigure < ApplicationRecord
+end

@@ -1,0 +1,64 @@
+<!-- lib/templates/erb/scaffold/_form.html.erb.tt -->
+
+<%= form_with(model: athlete) do |form| %>
+  <%= render "error_messages", resource: form.object %>
+
+  <div class="mb-6">
+
+    <%= form.label :document, class: "label" %>
+    <%= form.number_field :document, class: "input" , class: "form-control" %>
+
+  </div>
+
+  <div class="mb-6">
+
+    <%= form.label :name, class: "label" %>
+    <%= form.text_field :name, class: "input", class: "form-control" %>
+
+  </div>
+
+  <div class="mb-6">
+
+    <%= form.label :last_name, class: "label" %>
+    <%= form.text_field :last_name, class: "input" , class: "form-control" %>
+
+  </div>
+
+  <div class="mb-6">
+
+    <%= form.label :date_bir, class: "label" %>
+    <%= form.date_field :date_bir, class: "form-control"  %>
+
+  </div>
+
+  <div class="mb-6">
+
+    <%= form.label :year, class: "label" %>
+    <%= form.number_field :year, class: "input" , class: "form-control" %>
+
+  </div>
+
+  <div class="row">
+    <div class="form-group col-4">
+      <%= form.label :category_id,"Categoría" %>
+      <%= form.select(:category_id, Category.all.collect {|u| [u.description, u.id]}, :prompt => 'Select') %>
+    </div>
+
+    <div class="form-group col-4">
+      <%= form.label :free_skate_id, "Nivel Libre" %>
+      <%= form.select(:free_skate_id, FreeSkate.all.collect {|u| [u.description, u.id]}, :prompt => 'Select') %>
+    </div>
+
+    <div class="form-group col-4">
+      <%= form.label :compulsory_figure_id, "Nivel Escuela" %>
+      <%= form.select(:compulsory_figure_id, CompulsoryFigure.all.collect {|u| [u.description, u.id]}, :prompt => 'Select') %>
+    </div>
+
+  <div class="mb-6 flex justify-between items-center">
+    <%= form.button class: "btn btn-primary" %>
+
+    <% if form.object.persisted? %>
+      <%= link_to 'Eliminar', form.object, class: "btn btn-danger", method: :delete, data: { remote: true, confirm: "Está seguro?" } %>
+    <% end %>
+  </div>
+<% end %>

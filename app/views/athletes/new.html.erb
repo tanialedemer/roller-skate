@@ -1,0 +1,10 @@
+
+<!-- lib/templates/erb/scaffold/new.html.erb.tt -->
+
+<div class="container mx-auto my-8 px-4",aling="center">
+  <div class="max-w-xl mx-auto">
+    <h1 class="text-2xl font-bold mb-6 text-center"> Nueva Atleta</h1>
+    <%= link_to '< Volver', athletes_path, class: "link" %></br></br>
+    <%= render 'form', athlete: @athlete %>
+  </div>
+</div>

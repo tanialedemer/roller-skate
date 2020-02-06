@@ -1,0 +1,21 @@
+<!-- lib/templates/erb/scaffold/show.html.erb.tt -->
+
+<div class="container", aling="center">
+<div class="card border-primary mb-3">
+<div class="card">
+  <div class="card-header">
+    Detalles
+  </div>
+  <div class="card-body">
+    <div class="container mx-auto my-8 px-4">
+            <p class="text-lg font-semibold">Description:</p>
+      <p class="leading-normal"><%= @compulsory_figure.description %></p>
+
+            <div class="flex items-center justify-start mt-6">
+        <%= link_to 'Editar', edit_compulsory_figure_path(@compulsory_figure), class: "btn btn-info mr-4" %>
+        <%= link_to '< Volver', compulsory_figures_path, class: "btn btn-default" %>
+      </div>
+    </div>
+    </div>
+  </div>
+  </div>

@@ -1,0 +1,2 @@
+module CompulsoryFiguresHelper
+end

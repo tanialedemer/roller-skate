@@ -1,0 +1,49 @@
+
+<!-- lib/ /erb/scaffold/index.html.erb.tt -->
+
+<div class="container mx-auto my-8 px-4">
+  <div class="flex justify-between items-center mb-4">
+    <h1 class="text-2xl font-semibold">Free Skates</h1>
+
+    <% if @free_skates.exists? %>
+      <%= link_to 'Nuevo', new_free_skate_path, class: "btn btn-success" %>
+    <% end %>
+  </div>
+
+  <% if @free_skates.exists? %>
+    <div class="bg-white rounded shadow">
+      <table class="w-full table-hover">
+        <thead>
+          <tr>
+            <th class="p-3 uppercase text-left text-xs text-gray-700">Description</th>
+
+            <th class="p-3 uppercase text-left text-xs text-gray-700">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        <% @free_skates.each do |free_skate| %>
+          <tr class="group border-t border-gray-400 hover:bg-gray-100">
+                          <td class="p-3"><%= free_skate.description %></td>
+            
+            <td>
+              <%= link_to "Detalles", free_skate, class: "btn btn-info" %>
+              <%= link_to "Editar", edit_free_skate_path(free_skate), class: "btn btn-primary" %>
+     	      <td><%= link_to 'Eliminar', free_skate, class: "btn btn-danger" ,  method: :delete, data: { confirm: 'Está seguro?' } %></td>
+
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  <% else %>
+    <div class="bg-white rounded shadow flex items-center justify-between p-8">
+      <div class="flex-1 text-center", align="center">
+        <p class="text-xl font-semibold mb-4"> Crea tu primera Free Skate</p>
+      <%= link_to 'Nuevo', new_free_skate_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>

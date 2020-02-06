@@ -1,0 +1,2 @@
+class FreeSkate < ApplicationRecord
+end

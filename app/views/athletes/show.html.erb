@@ -1,0 +1,42 @@
+<!-- lib/templates/erb/scaffold/show.html.erb.tt -->
+
+<div class="container", aling="center">
+<div class="card border-primary mb-3">
+<div class="card">
+  <div class="card-header">
+    Detalles
+  </div>
+  <div class="card-body">
+    <div class="container mx-auto my-8 px-4">
+            <p class="text-lg font-semibold">Document:</p>
+      <p class="leading-normal"><%= @athlete.document %></p>
+
+            <p class="text-lg font-semibold">Name:</p>
+      <p class="leading-normal"><%= @athlete.name %></p>
+
+            <p class="text-lg font-semibold">Last name:</p>
+      <p class="leading-normal"><%= @athlete.last_name %></p>
+
+            <p class="text-lg font-semibold">Date bir:</p>
+      <p class="leading-normal"><%= @athlete.date_bir %></p>
+
+            <p class="text-lg font-semibold">Year:</p>
+      <p class="leading-normal"><%= @athlete.year %></p>
+
+            <p class="text-lg font-semibold">Category:</p>
+      <p class="leading-normal"><%= @athlete.category.description %></p>
+
+            <p class="text-lg font-semibold">Free skate:</p>
+      <p class="leading-normal"><%= @athlete.free_skate.description %></p>
+
+            <p class="text-lg font-semibold">Compulsory figure:</p>
+      <p class="leading-normal"><%= @athlete.compulsory_figure.description %></p>
+
+            <div class="flex items-center justify-start mt-6">
+        <%= link_to 'Editar', edit_athlete_path(@athlete), class: "btn btn-info mr-4" %>
+        <%= link_to '< Volver', athletes_path, class: "btn btn-default" %>
+      </div>
+    </div>
+    </div>
+  </div>
+  </div>

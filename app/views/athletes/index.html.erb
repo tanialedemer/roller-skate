@@ -1,0 +1,59 @@
+
+<!-- lib/ /erb/scaffold/index.html.erb.tt -->
+
+<div class="container mx-auto my-8 px-4">
+  <div class="flex justify-between items-center mb-4">
+    <h1 class="text-2xl font-semibold text-center">Atletas</h1>
+
+    <% if @athletes.exists? %>
+      <%= link_to 'Nuevo', new_athlete_path, class: "btn btn-success" %>
+    <% end %>
+  </div>
+
+  <% if @athletes.exists? %>
+    <div class="bg-white rounded shadow">
+      <table class="w-full table-hover">
+        <thead>
+          <tr>
+            <th class="p-3 uppercase text-left text-xs text-gray-700">Documento</th>
+            <th class="p-3 uppercase text-left text-xs text-gray-700">Nombre</th>
+            <th class="p-3 uppercase text-left text-xs text-gray-700">Apellido</th>
+            <th class="p-3 uppercase text-left text-xs text-gray-700">Categoría</th>
+            <th class="p-3 uppercase text-left text-xs text-gray-700">Free skate</th>
+            <th class="p-3 uppercase text-left text-xs text-gray-700">Compulsory figure</th>
+
+            <th class="p-3 uppercase text-left text-xs text-gray-700">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        <% @athletes.each do |athlete| %>
+          <tr class="group border-t border-gray-400 hover:bg-gray-100">
+                          <td class="p-3"><%= athlete.document %></td>
+                          <td class="p-3"><%= athlete.name %></td>
+                          <td class="p-3"><%= athlete.last_name %></td>
+                          <td class="p-3"><%= athlete.category.description %></td>
+                          <td class="p-3"><%= athlete.free_skate.description %></td>
+                          <td class="p-3"><%= athlete.compulsory_figure.description %></td>
+
+            <td>
+              <%= link_to "Detalles", athlete, class: "btn btn-info" %>
+              <%= link_to "Editar", edit_athlete_path(athlete), class: "btn btn-primary" %>
+     	      <td><%= link_to 'Eliminar', athlete, class: "btn btn-danger" ,  method: :delete, data: { confirm: 'Está seguro?' } %></td>
+
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  <% else %>
+    <div class="bg-white rounded shadow flex items-center justify-between p-8">
+      <div class="flex-1 text-center", align="center">
+        <p class="text-xl font-semibold mb-4"> Crea tu primera Atleta</p>
+      <%= link_to 'Nuevo', new_athlete_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>

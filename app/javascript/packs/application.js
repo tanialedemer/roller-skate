@@ -13,11 +13,18 @@ import "../stylesheets/application";
 import "./custom";
 import "select2";
 
-
+require("jquery")
 import $ from 'jquery';
-global.$ = jQuery;
+global.$ = $;
+global.jQuery = $;
 
+console.log("hahhahha " + $)
 
+require('packs/jquery.dataTables.min.js')
+
+// window.$ = window.jquery = require('./node_modules/jquery');
+// window.dt = require('./node_modules/datatables.net')();
+// window.$('#table_id').DataTable();
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.

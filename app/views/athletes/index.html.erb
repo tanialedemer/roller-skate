@@ -12,7 +12,7 @@
 
   <% if @athletes.exists? %>
     <div class="bg-white rounded shadow">
-      <table class="w-full table-hover">
+      <table class="w-full table-hover" id="athlete" class="display" style="width:100%">
         <thead>
           <tr>
             <th class="p-3 uppercase text-left text-xs text-gray-700">Documento</th>
@@ -57,3 +57,8 @@
     </div>
   <% end %>
 </div>
+<script type="text/javascript">
+
+		$('#athlete').DataTable();
+
+</script>

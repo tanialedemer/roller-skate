@@ -6,59 +6,60 @@
     <h1 class="text-2xl font-semibold text-center">Atletas</h1>
 
     <% if @athletes.exists? %>
-      <%= link_to 'Nuevo', new_athlete_path, class: "btn btn-success" %>
+    <%= link_to 'Nuevo', new_athlete_path, class: "btn btn-success" %>
     <% end %>
   </div>
 
   <% if @athletes.exists? %>
-    <div class="bg-white rounded shadow">
-      <table class="w-full table-hover" id="athlete" class="display" style="width:100%">
-        <thead>
-          <tr>
-            <th class="p-3 uppercase text-left text-xs text-gray-700">Documento</th>
-            <th class="p-3 uppercase text-left text-xs text-gray-700">Nombre</th>
-            <th class="p-3 uppercase text-left text-xs text-gray-700">Apellido</th>
-            <th class="p-3 uppercase text-left text-xs text-gray-700">Categoría</th>
-            <th class="p-3 uppercase text-left text-xs text-gray-700">Free skate</th>
-            <th class="p-3 uppercase text-left text-xs text-gray-700">Compulsory figure</th>
+  <div class="bg-white rounded shadow">
+    <table id="athlete" class="display w-full table-hover" style="width:100%">
+      <thead>
+        <tr>
+          <th class="p-3 uppercase text-left text-xs text-gray-700">Documento</th>
+          <th class="p-3 uppercase text-left text-xs text-gray-700">Nombre</th>
+          <th class="p-3 uppercase text-left text-xs text-gray-700">Apellido</th>
+          <th class="p-3 uppercase text-left text-xs text-gray-700">Categoría</th>
+          <th class="p-3 uppercase text-left text-xs text-gray-700">Free skate</th>
+          <th class="p-3 uppercase text-left text-xs text-gray-700">Compulsory figure</th>
 
-            <th class="p-3 uppercase text-left text-xs text-gray-700">Actions</th>
-          </tr>
-        </thead>
+          <th class="p-3 uppercase text-left text-xs text-gray-700">Actions</th>
+        </tr>
+      </thead>
 
-        <tbody>
+      <tbody>
         <% @athletes.each do |athlete| %>
-          <tr class="group border-t border-gray-400 hover:bg-gray-100">
-                          <td class="p-3"><%= athlete.document %></td>
-                          <td class="p-3"><%= athlete.name %></td>
-                          <td class="p-3"><%= athlete.last_name %></td>
-                          <td class="p-3"><%= athlete.category.description %></td>
-                          <td class="p-3"><%= athlete.free_skate.description %></td>
-                          <td class="p-3"><%= athlete.compulsory_figure.description %></td>
+        <tr class="group border-t border-gray-400 hover:bg-gray-100">
+          <td class="p-3"><%= athlete.document %></td>
+          <td class="p-3"><%= athlete.name %></td>
+          <td class="p-3"><%= athlete.last_name %></td>
+          <td class="p-3"><%= athlete.category.description %></td>
+          <td class="p-3"><%= athlete.free_skate.description %></td>
+          <td class="p-3"><%= athlete.compulsory_figure.description %></td>
+          <td class="p-3">
+            <%= link_to "Detalles", athlete, class: "btn btn-info" %>
+            <%= link_to "Editar", edit_athlete_path(athlete), class: "btn btn-primary" %>
+         
+            <%= link_to 'Eliminar', athlete, class: "btn btn-danger" ,  method: :delete, data: { confirm: 'Está seguro?' } %>
+          </td>
 
-            <td>
-              <%= link_to "Detalles", athlete, class: "btn btn-info" %>
-              <%= link_to "Editar", edit_athlete_path(athlete), class: "btn btn-primary" %>
-     	      <td><%= link_to 'Eliminar', athlete, class: "btn btn-danger" ,  method: :delete, data: { confirm: 'Está seguro?' } %></td>
 
-            </td>
-          </tr>
+        </tr>
         <% end %>
-        </tbody>
-      </table>
-    </div>
+      </tbody>
+    </table>
+  </div>
 
   <% else %>
-    <div class="bg-white rounded shadow flex items-center justify-between p-8">
-      <div class="flex-1 text-center", align="center">
-        <p class="text-xl font-semibold mb-4"> Crea tu primera Atleta</p>
+  <div class="bg-white rounded shadow flex items-center justify-between p-8">
+    <div class="flex-1 text-center", align="center">
+      <p class="text-xl font-semibold mb-4"> Crea tu primera Atleta</p>
       <%= link_to 'Nuevo', new_athlete_path, class: "btn btn-primary" %>
-      </div>
     </div>
+  </div>
   <% end %>
 </div>
 <script type="text/javascript">
 
-		$('#athlete').DataTable();
+  $('#athlete').DataTable();
 
 </script>
